@@ -6,8 +6,6 @@ void main() {
   runApp(const MyApp());
 }
 
-
-
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -15,19 +13,16 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-
-
 class _MyAppState extends State<MyApp> {
   @override
-  void changeTheme(){
-    setState((){
-
-    });
+  void changeTheme() {
+    setState(() {});
   }
+
   Widget build(BuildContext context) {
     // TODO: implement build
     return MaterialApp(
-      theme:ThemeData.dark(),
+      theme: ThemeData.dark(),
       title: "Flutter App",
       home: Scaffold(
         drawer: MyDrawer(),
@@ -38,13 +33,8 @@ class _MyAppState extends State<MyApp> {
             // style: TextStyle(color: Colors.white),
           ),
         ),
-        body: Column(
-            children: [
-              ElevatedButton(onPressed: changeTheme, child:Text("Change Theme")),
-              const Center(child: RandomWord()),
-            ],
-          ),
-        ),
+        body: const Center(child: RandomWord()),
+      ),
     );
   }
 }
@@ -69,7 +59,7 @@ class _RandomWordState extends State<RandomWord> {
         if (i.isOdd) {
           return const Divider();
         }
-        final index =  i~/ 2;
+        final index = i ~/ 2;
         if (index >= _suggestions.length) {
           _suggestions.addAll(generateWordPairs().take(10));
         }
@@ -77,8 +67,7 @@ class _RandomWordState extends State<RandomWord> {
             title: Text(
           _suggestions[index].asPascalCase,
           // style: _textStyle,
-        )
-        );
+        ));
       },
     );
   }
