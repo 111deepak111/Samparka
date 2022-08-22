@@ -1,5 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 import "package:english_words/english_words.dart";
+import 'package:google_fonts/google_fonts.dart';
+import 'package:uvce_ga/widgets/appbar.dart';
 import 'package:uvce_ga/widgets/drawer.dart';
 
 void main() {
@@ -14,24 +17,61 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  @override
+
+  ThemeData theme = ThemeData.dark();
+  IconData themeIcon = CupertinoIcons.moon_circle;
+
   void changeTheme() {
-    setState(() {});
+    setState(() {
+      if (theme == ThemeData.dark()) {
+        theme = ThemeData.light();
+        themeIcon = CupertinoIcons.sun_max_fill;
+      } else {
+        theme = ThemeData.dark();
+        themeIcon = CupertinoIcons.moon_circle;
+      }
+    });
   }
 
+  @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return MaterialApp(
-      theme: ThemeData.dark(),
+      theme: theme,
       title: "Flutter App",
       home: Scaffold(
         drawer: MyDrawer(),
         appBar: AppBar(
-          // backgroundColor: Colors.black54,
-          title: const Text(
-            "Sampada",
-            // style: TextStyle(color: Colors.white),
+          title: Text(
+            "Home",
+            style: TextStyle(
+              fontFamily: GoogleFonts.notoSans().fontFamily,
+              fontWeight: FontWeight.w900,
+            ),
+            textScaleFactor: 1.15,
           ),
+          actions: [
+            // AnimatedContainer(
+            //   duration: Duration(microseconds: 1000),
+            //   // width: ,
+            //   margin: EdgeInsets.only(right: 10,top: 5,bottom: 5),
+            //   decoration: BoxDecoration(
+            //     borderRadius: BorderRadius.circular(15.0),
+            //     color: toggle?Colors.black45:Colors.white,
+            //   ),
+            //   child: Stack(
+            //     children: <Widget>[
+            //       AnimatedPositioned(
+            //           child: Text("A"),
+            //           duration: Duration(microseconds: 1000),
+            //         curve: Curves.easeIn,
+            //         left: toggle?80.0:0.0,
+            //       )
+            //     ],
+            //   ),
+            // )
+            IconButton(onPressed: changeTheme, icon:Icon(themeIcon))
+          ],
         ),
         body: const Center(child: RandomWord()),
       ),

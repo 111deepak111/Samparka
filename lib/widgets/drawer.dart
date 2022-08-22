@@ -24,9 +24,10 @@ class MyDrawer extends Drawer {
                   Container(
                       padding: const EdgeInsets.only(left: 30),
                       child: const Icon(
-                        CupertinoIcons.add_circled,
+                        CupertinoIcons.arrow_up_doc_fill,
                         size: 35,
-                      )),
+                      )
+                  ),
                   Container(
                     padding: const EdgeInsets.only(right: 30),
                     child: const Text(
@@ -42,6 +43,7 @@ class MyDrawer extends Drawer {
           ),
           MyDrawerTiles("Search", CupertinoIcons.search_circle_fill),
           MyDrawerTiles("News", CupertinoIcons.news_solid),
+          MyDrawerTiles("Chronicles", CupertinoIcons.mic_circle_fill),
           MyDrawerTiles("Donate", CupertinoIcons.money_dollar_circle_fill)
         ],
       ),
