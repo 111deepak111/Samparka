@@ -16,7 +16,7 @@ class MyDrawer extends Drawer {
             child: DrawerHeader(
               margin: const EdgeInsets.only(bottom: 0),
               padding: const EdgeInsets.only(top: 25, bottom: 0),
-              decoration: const BoxDecoration(color: Colors.black),
+              decoration: const BoxDecoration(),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -62,12 +62,11 @@ class MyDrawerTiles extends StatelessWidget {
       title: Text(
         head,
         textScaleFactor: 2,
-        style: const TextStyle(color: Colors.white),
+        style: const TextStyle(),
       ),
       leading: Icon(
         ico,
         size: 35,
-        color: Colors.white,
       ),
       onTap: () {},
     );

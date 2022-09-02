@@ -18,9 +18,6 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-  ThemeData theme = ThemeData.dark();
-  IconData themeIcon = CupertinoIcons.moon_circle;
-
   void changeTheme() {
     setState(() {
       if (theme == ThemeData.dark()) {
@@ -33,45 +30,28 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  ThemeData theme = ThemeData.dark();
+  IconData themeIcon = CupertinoIcons.moon_circle;
+
   @override
   Widget build(BuildContext context) {
+    final IcoBtn = IconButton(onPressed: changeTheme, icon:Icon(themeIcon));
     // TODO: implement build
     return MaterialApp(
       theme: theme,
       title: "Flutter App",
       home: Scaffold(
         drawer: MyDrawer(),
-        appBar: AppBar(
-          title: Text(
-            "Home",
-            style: TextStyle(
-              fontFamily: GoogleFonts.notoSans().fontFamily,
-              fontWeight: FontWeight.w900,
-            ),
-            textScaleFactor: 1.15,
-          ),
-          actions: [
-            // AnimatedContainer(
-            //   duration: Duration(microseconds: 1000),
-            //   // width: ,
-            //   margin: EdgeInsets.only(right: 10,top: 5,bottom: 5),
-            //   decoration: BoxDecoration(
-            //     borderRadius: BorderRadius.circular(15.0),
-            //     color: toggle?Colors.black45:Colors.white,
-            //   ),
-            //   child: Stack(
-            //     children: <Widget>[
-            //       AnimatedPositioned(
-            //           child: Text("A"),
-            //           duration: Duration(microseconds: 1000),
-            //         curve: Curves.easeIn,
-            //         left: toggle?80.0:0.0,
-            //       )
-            //     ],
-            //   ),
-            // )
-            IconButton(onPressed: changeTheme, icon:Icon(themeIcon))
-          ],
+        appBar: MyAppBar("Head",IcoBtn
+        //   title: Text(
+        //     "Home",
+        //     style: TextStyle(
+        //       fontFamily: GoogleFonts.notoSans().fontFamily,
+        //       fontWeight: FontWeight.w900,
+        //     ),
+        //     textScaleFactor: 1.15,
+        //   ),
+        //   actions: [IcoBtn],
         ),
         body: const Center(child: RandomWord()),
       ),
@@ -88,9 +68,7 @@ class RandomWord extends StatefulWidget {
 
 class _RandomWordState extends State<RandomWord> {
   final _suggestions = <WordPair>[];
-  final _textStyle = const TextStyle(
-      color: Colors.white, fontSize: 28, fontFamily: "Times New Roman");
-  @override
+ @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return ListView.builder(
