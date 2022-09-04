@@ -1,43 +1,42 @@
+import 'package:Samparka/routes.dart';
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
-import 'package:uvce_ga/pages/home.dart';
+
+
+final themeGlobalKey = new GlobalKey<_MyAppState>();
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp(key: themeGlobalKey,));
 }
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
-
+  static ThemeData theme = ThemeData.dark();
+  static IconData themeIcon = CupertinoIcons.moon_circle;
   @override
   State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
 
-  void changeTheme() {
+  void changeTheme(){
     setState(() {
-      if (theme == ThemeData.dark()) {
-        theme = ThemeData.light();
-        themeIcon = CupertinoIcons.sun_max_fill;
-      } else {
-        theme = ThemeData.dark();
-        themeIcon = CupertinoIcons.moon_circle;
+      if (MyApp.theme == ThemeData.dark()){
+        MyApp.theme = ThemeData.light();
+        MyApp.themeIcon = CupertinoIcons.sun_max;
+      }else{
+        MyApp.theme = ThemeData.dark();
+        MyApp.themeIcon = CupertinoIcons.moon_circle;
       }
     });
   }
-
-  ThemeData theme = ThemeData.dark();
-  IconData themeIcon = CupertinoIcons.moon_circle;
-
   @override
   Widget build(BuildContext context) {
-    final IcoBtn = IconButton(onPressed: changeTheme, icon:Icon(themeIcon));
     // TODO: implement build
     return MaterialApp(
-      theme: theme,
-      title: "Flutter App",
-      home:HomePage(IcoBtn)
+     initialRoute: "/marvel",
+      onGenerateRoute: RouteGenerator.generateRoute,
+      theme: MyApp.theme,
     );
   }
 }

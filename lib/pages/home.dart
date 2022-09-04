@@ -1,18 +1,14 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
-import 'package:uvce_ga/widgets/appbar.dart';
-
+import 'package:Samparka/widgets/appbar.dart';
 import '../widgets/drawer.dart';
 
 class HomePage extends StatelessWidget{
- final IconButton IcoBtn;
- const HomePage(this.IcoBtn);
-
   @override
   Widget  build(BuildContext context){
     return Scaffold(
       drawer: MyDrawer(),
-      appBar: MyAppBar("Home",IcoBtn),
+      appBar: MyAppBar("Home"),
       body: const Center(child: RandomWord(),),
     );
   }
